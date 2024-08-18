@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  phone        String        @unique
+  password     String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  patient      Patient?
+  appointments Appointment[] // One-to-many relation with Appointment
+}
+
+model Patient {
+  id                     Int      @id @default(autoincrement())
+  userId                 Int      @unique
+  birthDate              DateTime
+  gender                 String?
+  address                String?
+  occupation             String?
+  emergencyContactName   String?
+  emergencyContactNumber String?
+  primaryPhysician       String?
+  insuranceProvider      String?
+  insurancePolicyNumber  String?
+  allergies              String?
+  currentMedication      String?
+  familyMedicalHistory   String?
+  pastMedicalHistory     String?
+  identificationType     String?
+  identificationNumber   String?
+  identificationDocument Bytes?
+  treatmentConsent       Boolean
+  disclosureConsent      Boolean
+  privacyConsent         Boolean
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  // Relationships
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appointments Appointment[] // One-to-many relation with Appointment
+
+  // Indexes
+  @@index([userId])
+}
+
+model Appointment {
+  id                 Int      @id @default(autoincrement())
+  userId             Int
+  patientId          Int
+  primaryPhysician   String
+  schedule           DateTime
+  status             String
+  reason             String?
+  notes              String?
+  cancellationReason String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relationships
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade) // Many-to-one relation with User
+  patient Patient @relation(fields: [patientId], references: [id], onDelete: Cascade) // Many-to-one relation with Patient
+
+  // Indexes
+  @@index([userId])
+  @@index([patientId])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
