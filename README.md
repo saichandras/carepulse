@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CarePulse - Healthcare Management System
 
-## Getting Started
+CarePulse is a comprehensive healthcare management system designed to streamline the process of managing patient appointments, doctor schedules, and patient records. This system includes features for both patients and admins, providing a seamless experience for booking, confirming, and canceling appointments.
 
-First, run the development server:
+![CarePulse Dashboard](public/assets/icons/logo-full.svg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📋 Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup](#setup)
+- [Environment Variables](#environment-variables)
+- [Running the Project](#running-the-project)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🤖 Introduction
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+CarePulse is built using the latest technologies such as Next.js, TypeScript, TailwindCSS, and PostgreSQL. The system is designed to provide an intuitive interface for patients to manage their appointments and for admins to handle the appointment scheduling efficiently.
 
-## Learn More
+## 🔋 Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Patient Registration**: Patients can sign up, create a profile, and manage their information.
+- **Appointment Booking**: Patients can book appointments with their preferred doctors.
+- **Admin Dashboard**: Admins can view and manage all appointments, confirm or cancel them.
+- **JWT Authentication**: Secure authentication mechanism using JSON Web Tokens.
+- **Responsive Design**: Fully responsive UI, optimized for all device sizes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: TailwindCSS, ShadCN
+- **Backend**: Node.js, Express
+- **Database**: PostgreSQL
+- **Authentication**: JWT (JSON Web Tokens)
+- **Deployment**: Docker, Docker Compose
 
-## Deploy on Vercel
+## 🤸 Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Node.js (v16+)
+- Docker & Docker Compose
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/your-username/carepulse.git
+   cd carepulse
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Environment Variables**
+
+   Create a `.env.local` file in the root directory and add the following:
+
+   ```env
+   DATABASE_URL="postgresql://admin:admin@localhost:5432/carepulse?schema=public"
+   NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+   JWT_SECRET="your_jwt_secret_key"
+   NEXT_PUBLIC_ADMIN_PASSKEY="123456"
+   ```
+
+4. **Run the Project**
+
+   ```bash
+   docker-compose up
+   ```
+
+   This command will start the PostgreSQL database, run the migrations, and start the Next.js development server.
+
+5. **Access the Application**
+
+   Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+
+## 🚀 Future Enhancements
+
+- **Twilio Integration**: SMS notifications for appointment confirmations.
+- **Multi-Language Support**: Adding support for multiple languages to improve accessibility.
+
+## 🛠️ Contribution Guidelines
+
+Feel free to fork this repository and contribute by submitting a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+Made with ❤️ by [Sai Chandra Sriram](https://github.com/saichandras)
