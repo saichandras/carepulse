@@ -1,93 +1,158 @@
 # CarePulse - Healthcare Management System
 
-CarePulse is a comprehensive healthcare management system designed to streamline the process of managing patient appointments, doctor schedules, and patient records. This system includes features for both patients and admins, providing a seamless experience for booking, confirming, and canceling appointments.
+A full-stack healthcare management platform that demonstrates end-to-end development skills through comprehensive patient appointment management and administrative workflows. Built with modern web technologies and production-ready architecture.
 
-![CarePulse Dashboard](public/assets/icons/logo-full.svg)
+## 🎯 Project Overview
 
-## 📋 Table of Contents
+Engineered a comprehensive healthcare patient management application that streamlines the entire appointment lifecycle from patient registration to administrative oversight. The system demonstrates full-stack development capabilities with secure authentication, real-time data management, and intuitive user interfaces for both patients and administrators.
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Setup](#setup)
-- [Environment Variables](#environment-variables)
-- [Running the Project](#running-the-project)
+**Key Accomplishments:**
+- Built complete patient registration and appointment booking system with form validation
+- Developed robust administrative dashboard with appointment analytics (94 scheduled, 32 pending, 56 cancelled)
+- Implemented secure role-based access control with passcode protection for admin functions
+- Created responsive UI with modal-based interactions and real-time appointment management
+- Integrated comprehensive appointment lifecycle management (schedule, confirm, cancel, reschedule)
+- Designed user-friendly patient portal with profile management and appointment history
 
-## 🤖 Introduction
+## 📹 Application Demo Videos
 
-CarePulse is built using the latest technologies such as Next.js, TypeScript, TailwindCSS, and PostgreSQL. The system is designed to provide an intuitive interface for patients to manage their appointments and for admins to handle the appointment scheduling efficiently.
+### **User Sign Up & Authentication Workflow**
+| **Complete Authentication Process** |
+|-------------------------------------|
+| <video src="https://github.com/user-attachments/assets/d398d331-7fe8-4868-874e-c37332795f09" width="800" controls></video> |
+| Complete sign-in and signup workflow with real-time validation, user feedback, and secure authentication |
+
+### **Patient Registration Process**
+| **Comprehensive Patient Registration** |
+|----------------------------------------|
+| <video src="https://github.com/user-attachments/assets/57aeb3c3-4f3a-4b18-bc11-204a1d922ae3" width="800" controls></video> |
+| Detailed patient registration with medical history collection, form validation, and secure data handling |
+
+### **New Appointment Booking**
+| **Real-time Appointment Scheduling** |
+|--------------------------------------|
+| <video src="https://github.com/user-attachments/assets/3017c090-d1e0-4ecf-8c31-0bdfff6f06b1" width="800" controls></video> |
+| Complete appointment booking system with doctor selection, date/time scheduling, and confirmation process |
+
+### **User Dashboard Experience**
+| **Patient Dashboard & Profile Management** |
+|--------------------------------------------|
+| <video src="https://github.com/user-attachments/assets/3fcd9d89-6aa0-4d04-9887-225e582e4860" width="800" controls></video> |
+| Comprehensive user dashboard with appointment management, profile updates, and appointment history |
+
+### **Admin Panel Management**
+| **Administrative Dashboard & Controls** |
+|-----------------------------------------|
+| <video src="https://github.com/user-attachments/assets/5cf18556-8be0-4b52-9be6-9acc5b26195d" width="800" controls></video> |
+| Full admin panel with real-time analytics, appointment management, patient oversight, and administrative controls |
 
 ## 🔋 Features
 
-- **Patient Registration**: Patients can sign up, create a profile, and manage their information.
-- **Appointment Booking**: Patients can book appointments with their preferred doctors.
-- **Admin Dashboard**: Admins can view and manage all appointments, confirm or cancel them.
-- **JWT Authentication**: Secure authentication mechanism using JSON Web Tokens.
-- **Responsive Design**: Fully responsive UI, optimized for all device sizes.
+**Patient Portal**
+- Secure user registration and authentication
+- Appointment booking with real-time availability
+- Profile management and appointment history
+
+**Admin Dashboard**
+- Comprehensive appointment management (confirm, cancel, reschedule)
+- Patient record management
+- Real-time dashboard analytics
+- Secure admin access with passkey authentication
+
+**System Features**
+- JWT-based authentication
+- Responsive design for all devices
+- Form validation and error handling
+- Docker containerization for easy deployment
 
 ## ⚙️ Tech Stack
 
-- **Frontend**: Next.js, React, TypeScript
-- **Styling**: TailwindCSS, ShadCN
-- **Backend**: Node.js, Express
-- **Database**: PostgreSQL
-- **Authentication**: JWT (JSON Web Tokens)
-- **Deployment**: Docker, Docker Compose
+**Frontend & Backend**
+- Next.js 14 with App Router (Full-stack framework)
+- TypeScript for type safety
+- Next.js API Routes for backend functionality
 
-## 🤸 Setup
+**UI/UX & Styling**
+- TailwindCSS with custom design system
+- Radix UI components for accessibility
+- Plus Jakarta Sans font (Google Fonts)
+- Dark theme with custom theme provider
+- React Toastify for notifications
+
+**Forms & Validation**
+- React Hook Form for form management
+- Zod for schema validation
+- React FilePond for file uploads
+- React DatePicker and phone number input
+
+**Database & Authentication**
+- PostgreSQL with Prisma ORM
+- JWT authentication with Jose library
+- Argon2 for secure password hashing
+- Next-client-cookies for session management
+
+**Data Management**
+- Tanstack Table for complex data display
+- Real-time appointment status updates
+- File upload with validation and preview
+
+**Development & DevOps**
+- TypeScript for type safety
+- ESLint for code quality
+- Docker & Docker Compose for containerization
+- Environment-based configuration
+
+## 🤸 Quick Start
 
 ### Prerequisites
-
-- Node.js (v16+)
+- Node.js (v18+)
 - Docker & Docker Compose
 
 ### Installation
+```bash
+# Clone repository
+git clone https://github.com/your-username/carepulse.git
+cd carepulse
 
-1. **Clone the Repository**
+# Install dependencies
+npm install
 
-   ```bash
-   git clone https://github.com/your-username/carepulse.git
-   cd carepulse
-   ```
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your configuration
 
-2. **Install Dependencies**
+# Start with Docker
+docker-compose up -d
 
-   ```bash
-   npm install
-   ```
+# Access application
+# http://localhost:3000
+```
 
-3. **Set Up Environment Variables**
+### Environment Variables
+```env
+DATABASE_URL="postgresql://admin:admin@localhost:5432/carepulse?schema=public"
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+JWT_SECRET="your_jwt_secret_key"
+NEXT_PUBLIC_ADMIN_PASSKEY="123456"
+```
 
-   Create a `.env.local` file in the root directory and add the following:
+## 🚀 Development
 
-   ```env
-   DATABASE_URL="postgresql://admin:admin@localhost:5432/carepulse?schema=public"
-   NEXT_PUBLIC_BASE_URL="http://localhost:3000"
-   JWT_SECRET="your_jwt_secret_key"
-   NEXT_PUBLIC_ADMIN_PASSKEY="123456"
-   ```
+```bash
+npm run dev          # Start development server
+npm run build        # Create production build
+npm run db:migrate   # Run database migrations
+npm run lint         # Code linting
+```
 
-4. **Run the Project**
+## 🔮 Future Enhancements
 
-   ```bash
-   docker-compose up
-   ```
-
-   This command will start the PostgreSQL database, run the migrations, and start the Next.js development server.
-
-5. **Access the Application**
-
-   Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
-
-## 🚀 Future Enhancements
-
-- **Twilio Integration**: SMS notifications for appointment confirmations.
-- **Multi-Language Support**: Adding support for multiple languages to improve accessibility.
-
-## 🛠️ Contribution Guidelines
-
-Feel free to fork this repository and contribute by submitting a pull request. For major changes, please open an issue first to discuss what you would like to change.
+- SMS notifications with Twilio integration
+- Real-time updates with WebSocket
+- Advanced analytics dashboard
+- Multi-language support
+- Mobile app companion
 
 ---
 
-Made with ❤️ by [Sai Chandra Sriram](https://github.com/saichandras)
+**Built by [Sai Chandra Sriram](https://github.com/saichandras)** - Demonstrating full-stack development with modern web technologies
